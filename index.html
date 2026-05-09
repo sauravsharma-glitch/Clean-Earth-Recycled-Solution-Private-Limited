@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Clean Earth Recycled Solution Private Limited - innovative waste management and sustainable recycling solutions for a greener future.">
+  <title>Clean Earth | Eco Recycling Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Logo in Browser Tab -->
+  <link rel="icon" type="image/png" href="Business-logo.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #1a2e2c;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --white: #ffffff;
+      --dark-green: #0a2f2a;
+      --emerald: #2c7a6e;
+      --emerald-light: #3e9b8b;
+      --mint-grad: linear-gradient(135deg, #eef8f5 0%, #daf0ea 100%);
+      --glass-bg: rgba(255, 255, 255, 0.85);
+      --glass-border: rgba(46, 125, 108, 0.2);
+      --shadow-sm: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+      --shadow-md: 0 25px 40px -12px rgba(0, 30, 20, 0.12);
+      --transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    ::selection {
+      background: var(--emerald);
+      color: white;
+    }
+
+    /* Loader */
+    .loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease, visibility 0.6s;
+    }
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 5px solid #e0f2ef;
+      border-top: 5px solid var(--emerald);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .loader-wrapper.fade-out {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem 5%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      transition: var(--transition);
+      border-bottom: 1px solid rgba(44, 122, 110, 0.1);
+    }
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.05);
+      padding: 0.7rem 5%;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.4rem;
+      font-weight: 800;
+    }
+    .logo-img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      object-fit: contain;
+    }
+    .logo span {
+      background: linear-gradient(130deg, #0a2f2a, #2c7a6e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1e3b37;
+      transition: var(--transition);
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--emerald);
+    }
+    .cta-quote {
+      background: var(--dark-green);
+      color: white !important;
+      padding: 0.6rem 1.4rem;
+      border-radius: 40px;
+      font-weight: 600;
+    }
+    .cta-quote:hover {
+      background: var(--emerald);
+      transform: translateY(-2px);
+    }
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--dark-green);
+    }
+
+    /* Page Container */
+    .page {
+      display: none;
+    }
+    .page.active-page {
+      display: block;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      background: linear-gradient(107deg, rgba(10, 47, 42, 0.75) 0%, rgba(44, 122, 110, 0.6) 100%), url('https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=2070&auto=format');
+      background-size: cover;
+      background-position: center;
+      padding: 6rem 5% 4rem;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      color: white;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary, .btn-outline {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--dark-green);
+      color: white;
+    }
+    .btn-primary:hover {
+      background: var(--emerald);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 22px -8px rgba(44, 122, 110, 0.4);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid white;
+      color: white;
+    }
+    .btn-outline:hover {
+      background: white;
+      color: var(--dark-green);
+      transform: translateY(-3px);
+    }
+    .stats-row {
+      display: flex;
+      gap: 2rem;
+      margin-top: 3rem;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      border-radius: 32px;
+      padding: 1.5rem 2rem;
+      flex-wrap: wrap;
+    }
+    .stat-item h3 {
+      font-size: 1.9rem;
+      font-weight: 800;
+    }
+    .scroll-down {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+    @keyframes bounce {
+      0%,100%{transform:translateX(-50%) translateY(0);}
+      50%{transform:translateX(-50%) translateY(12px);}
+    }
+
+    section {
+      padding: 5rem 5%;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+    h2 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #0a2f2a;
+    }
+    .section-sub {
+      color: #4f6f6a;
+      max-width: 700px;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 28px;
+      padding: 1.8rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--glass-border);
+      transition: var(--transition);
+    }
+    .mission-vision {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .glass-card i {
+      font-size: 2rem;
+      color: var(--emerald);
+      margin-bottom: 1rem;
+    }
+    .professional-img {
+      margin-top: 2rem;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .professional-img img {
+      width: 100%;
+      object-fit: cover;
+      height: 320px;
+    }
+
+    .service-grid, .why-grid, .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .service-card, .why-card, .testimonial-card {
+      background: white;
+      border-radius: 32px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: 0 8px 28px -6px rgba(0, 0, 0, 0.05);
+      border: 1px solid #ecf3f1;
+    }
+    .service-card:hover, .why-card:hover, .testimonial-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--emerald-light);
+    }
+    .service-card i, .why-card i {
+      font-size: 2.8rem;
+      color: var(--emerald);
+      margin-bottom: 1rem;
+    }
+    .testimonial-card i.fa-star {
+      font-size: 1rem;
+      color: #f5b042;
+      margin: 0 1px;
+    }
+
+    /* ===== PROCESS SECTION STYLES ===== */
+    .process-section {
+      padding: 5rem 5%;
+      max-width: 1400px;
+      margin: 2rem auto;
+      background: linear-gradient(135deg, #eef8f5 0%, #daf0ea 100%);
+      border-radius: 48px;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .section-header h2 {
+      font-size: 2.5rem;
+      color: #0a2f2a;
+      margin-bottom: 1rem;
+    }
+    .section-header p {
+      color: #4f6f6a;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 60px;
+      left: 10%;
+      right: 10%;
+      height: 3px;
+      background: linear-gradient(90deg, #2c7a6e, #0a2f2a, #2c7a6e);
+      border-radius: 3px;
+      z-index: 1;
+    }
+    .timeline-step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 28px;
+      margin: 0 0.5rem;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+    .timeline-step:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 40px -12px rgba(44,122,110,0.2);
+    }
+    .step-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #0a2f2a, #2c7a6e);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      color: white;
+      font-size: 2rem;
+      transition: all 0.3s;
+    }
+    .timeline-step:hover .step-icon {
+      transform: scale(1.1);
+    }
+    .step-number {
+      display: inline-block;
+      background: #3e9b8b;
+      color: white;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    .timeline-step h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #0a2f2a;
+    }
+    .timeline-step p {
+      color: #5a7a74;
+      font-size: 0.9rem;
+    }
+
+    /* ===== IMPACT SECTION STYLES ===== */
+    .impact-full {
+      background: linear-gradient(115deg, #0a2f2a 0%, #1a5a4f 100%);
+      border-radius: 64px;
+      padding: 4rem 5%;
+      margin: 2rem 5%;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .impact-full::before {
+      content: "🌍";
+      position: absolute;
+      font-size: 18rem;
+      opacity: 0.05;
+      bottom: -3rem;
+      right: -3rem;
+      pointer-events: none;
+    }
+    .impact-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .impact-header h2 {
+      color: white;
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+    }
+    .impact-stats {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .impact-stat {
+      flex: 1;
+      min-width: 150px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(4px);
+      border-radius: 32px;
+      padding: 2rem 1rem;
+      transition: transform 0.3s;
+    }
+    .impact-stat:hover {
+      transform: translateY(-8px);
+      background: rgba(255,255,255,0.15);
+    }
+    .impact-stat h3 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .impact-stat i {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+    .earth-graphic {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 4rem;
+      animation: floatEarth 3s ease-in-out infinite;
+    }
+    @keyframes floatEarth {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* ===== FAQ SECTION STYLES ===== */
+    .faq-section {
+      padding: 5rem 5%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .faq-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .faq-item {
+      background: white;
+      border-radius: 20px;
+      border: 1px solid #e0ece8;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 1.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      color: #0a2f2a;
+      transition: background 0.2s;
+    }
+    .faq-question:hover {
+      background: #f8fcfb;
+    }
+    .faq-question i {
+      transition: transform 0.3s;
+      color: #2c7a6e;
+    }
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+      padding: 0 1.5rem;
+      color: #4a6a65;
+      line-height: 1.6;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      padding: 0 1.5rem 1.2rem 1.5rem;
+    }
+
+    .cta-section {
+      background: linear-gradient(115deg, #0a2f2a, #1f6b5d);
+      border-radius: 48px;
+      text-align: center;
+      color: white;
+      padding: 4rem 2rem;
+    }
+    .cta-section h2 {
+      color: white;
+    }
+    .cta-section p {
+      margin-bottom: 1.8rem;
+    }
+    .btn-white {
+      background: white !important;
+      color: var(--dark-green) !important;
+    }
+/* Footer Styles */
+footer {
+  background: #08201c;
+  color: #cddfdb;
+  padding: 3rem 5% 2rem;
+  margin-top: 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+/* Footer Logo Section */
+.footer-logo-section {
+  text-align: left;
+  padding-left: 10px;
+}
+
+.footer-logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+  transform: scale(1.05);
+}
+
+.footer-logo-section h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #cddfdb;
+}
+
+.footer-logo-section p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #cddfdb;
+}
+
+/* Footer Links */
+.footer-grid a {
+  color: #cddfdb;
+  text-decoration: none;
+  display: block;
+  margin: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.footer-grid a:hover {
+  color: var(--emerald);
+}
+
+.footer-grid h4 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.footer-grid p {
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+}
+
+.footer-grid i {
+  margin-right: 0.5rem;
+  color: var(--emerald);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.8rem;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .footer-logo-section {
+    text-align: center;
+  }
+  
+  .footer-logo {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .footer-grid h4 {
+    margin-bottom: 0.5rem;
+  }
+}
+
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      background: var(--emerald);
+      color: white;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: 0.3s;
+      z-index: 99;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  
+    }
+    .back-to-top.show {
+      opacity: 1;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: all 0.7s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Contact Page Specific */
+    .contact-hero {
+      background: linear-gradient(135deg, rgba(10,47,42,0.92) 0%, rgba(44,122,110,0.85) 100%), url('https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=2070&auto=format');
+      background-size: cover;
+      background-position: center;
+      padding: 8rem 5% 5rem;
+      text-align: center;
+      color: white;
+    }
+    .contact-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+    .contact-hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .contact-main {
+      padding: 5rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
+    }
+    .contact-info-card {
+      background: linear-gradient(135deg, #f8fcfb 0%, #eef5f2 100%);
+      border-radius: 32px;
+      padding: 2rem;
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.1);
+    }
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: white;
+      border-radius: 20px;
+      transition: transform 0.3s ease;
+    }
+    .info-item:hover {
+      transform: translateX(8px);
+      box-shadow: 0 8px 20px rgba(44,122,110,0.1);
+    }
+    .info-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--emerald);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .info-details h3 {
+      margin-bottom: 0.3rem;
+      color: var(--dark-green);
+    }
+    .info-details p, .info-details a {
+      color: #4a6a65;
+      text-decoration: none;
+      line-height: 1.5;
+    }
+    .contact-form {
+      background: white;
+      border-radius: 32px;
+      padding: 2rem;
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.08);
+      border: 1px solid rgba(44,122,110,0.2);
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--dark-green);
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border: 1.5px solid #e0ece8;
+      border-radius: 16px;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--emerald);
+      box-shadow: 0 0 0 3px rgba(44,122,110,0.1);
+    }
+    .submit-btn {
+      background: var(--dark-green);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      width: 100%;
+    }
+    .submit-btn:hover {
+      background: var(--emerald);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(44,122,110,0.3);
+    }
+    .map-section {
+      margin-top: 4rem;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+    }
+    .map-section iframe {
+      width: 100%;
+      height: 400px;
+      border: 0;
+    }
+    .business-hours {
+      background: var(--mint-grad);
+      border-radius: 24px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    /* WhatsApp Button Styles */
+    .whatsapp-nav-btn {
+      background: #25D366 !important;
+      color: white !important;
+      padding: 0.6rem 1.4rem;
+      border-radius: 40px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.35s ease;
+    }
+    .whatsapp-nav-btn:hover {
+      background: #128C7E !important;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+    }
+    .whatsapp-nav-btn i {
+      font-size: 1.2rem;
+    }
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #25D366;
+      color: white;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      z-index: 1000;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      animation: pulse 2s infinite;
+    }
+    .floating-whatsapp:hover {
+      transform: scale(1.1);
+      background: #128C7E;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+    }
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 75px;
+      background: #1a2e2c;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+    }
+    .floating-whatsapp:hover .whatsapp-tooltip {
+      opacity: 1;
+      visibility: visible;
+      right: 85px;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    @media (max-width: 968px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-hero h1 { font-size: 2.5rem; }
+      h2 { font-size: 2rem; }
+      .hero h1 { font-size: 2.2rem; }
+      .timeline::before { display: none; }
+      .timeline { flex-direction: column; }
+      .timeline-step { margin-bottom: 1.5rem; }
+      .impact-stats { flex-direction: column; align-items: center; }
+      .impact-stat { width: 80%; }
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        flex-direction: column;
+        background: white;
+        width: 80%;
+        height: calc(100vh - 70px);
+        padding: 2rem;
+        box-shadow: 5px 0 30px rgba(0,0,0,0.1);
+        transition: 0.4s;
+        gap: 2rem;
+      }
+      .nav-links.active { left: 0; }
+      .hamburger { display: block; }
+      .stats-row { flex-direction: column; }
+      .section-header h2 { font-size: 2rem; }
+      .impact-stat h3 { font-size: 2.2rem; }
+      .impact-full { margin: 2rem 3%; }
+      .floating-whatsapp {
+        width: 55px;
+        height: 55px;
+        font-size: 1.6rem;
+        bottom: 20px;
+        right: 20px;
+      }
+      .whatsapp-tooltip { display: none; }
+    }
+    @media (max-width: 480px) {
+      .hero-buttons .btn-primary, .hero-buttons .btn-outline {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.9rem;
+      }
+      .info-item { flex-direction: column; text-align: center; align-items: center; }
+      .floating-whatsapp {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+        bottom: 15px;
+        right: 15px;
+      }
+    }
+    /* ===== FLOATING EMAIL BUTTON STYLES ===== */
+.floating-email {
+  position: fixed;
+  bottom: 30px;
+  right: 110px;  /* Position to the left of WhatsApp button */
+  background: #EA4335;
+  color: white;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 4px 15px rgba(234, 67, 53, 0.4);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  animation: pulseEmail 2s infinite;
+}
+
+.floating-email:hover {
+  transform: scale(1.1);
+  background: #C5221F;
+  box-shadow: 0 8px 25px rgba(234, 67, 53, 0.5);
+}
+
+.email-tooltip {
+  position: absolute;
+  right: 75px;
+  background: #1a2e2c;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.floating-email:hover .email-tooltip {
+  opacity: 1;
+  visibility: visible;
+  right: 85px;
+}
+
+@keyframes pulseEmail {
+  0% {
+    box-shadow: 0 0 0 0 rgba(234, 67, 53, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(234, 67, 53, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(234, 67, 53, 0);
+  }
+}
+
+/* Update WhatsApp button position to make room */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .floating-email {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    bottom: 20px;
+    right: 85px;
+  }
+  .floating-whatsapp {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    bottom: 20px;
+    right: 20px;
+  }
+  .email-tooltip {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-email {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+    bottom: 15px;
+    right: 75px;
+  }
+  .floating-whatsapp {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+/* Floating Call Button - Right Side */
+.floating-call {
+  position: fixed;
+  bottom: 30px;
+  right: 190px;  /* Position to the left of Email button */
+  background: #34B7F1;
+  color: white;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 4px 15px rgba(52, 183, 241, 0.4);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  animation: pulseCall 2s infinite;
+}
+
+.floating-call:hover {
+  transform: scale(1.1);
+  background: #1DA1F2;
+  box-shadow: 0 8px 25px rgba(52, 183, 241, 0.5);
+}
+
+.call-tooltip {
+  position: absolute;
+  right: 75px;  /* Tooltip appears on left side since button is on right */
+  background: #1a2e2c;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.floating-call:hover .call-tooltip {
+  opacity: 1;
+  visibility: visible;
+  right: 85px;
+}
+
+@keyframes pulseCall {
+  0% { box-shadow: 0 0 0 0 rgba(52, 183, 241, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(52, 183, 241, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(52, 183, 241, 0); }
+}
+
+/* Mobile Responsive - All buttons on right side */
+@media (max-width: 768px) {
+  .floating-whatsapp {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .floating-email {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    bottom: 20px;
+    right: 85px;
+  }
+  
+  .floating-call {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    bottom: 20px;
+    right: 150px;  /* Even further left on mobile */
+  }
+  
+  .call-tooltip, .email-tooltip, .whatsapp-tooltip {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-whatsapp {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .floating-email {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+    bottom: 15px;
+    right: 75px;
+  }
+  
+  .floating-call {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+    bottom: 15px;
+    right: 135px;
+  }
+}
+  </style>
+</head>
+<body>
+
+<div class="loader-wrapper" id="loader">
+  <div class="loader"></div>
+</div>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <img src="about-logo.png" alt="Logo" class="logo-img">
+      <span>CLEAN EARTH</span>
+    </div>
+    <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" class="active-nav">Home</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="certifications.html">Certifications</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="tel:+9192501 96673" class="cta-quote" id="callNowBtn">
+  <i class="fas fa-phone-alt"></i> Call Now
+</a>
+      <a href="#" class="whatsapp-nav-btn" id="whatsappNavBtn">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Home Page -->
+<div id="homePage" class="page active-page">
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>Building a Cleaner Earth Through Smart Recycling Solutions</h1>
+        <p>Innovative waste management and sustainable recycling services for industries, businesses, and communities.</p>
+        <div class="hero-buttons">
+          <a class="btn-primary" data-page="contact">Get Free Consultation</a>
+          <a class="btn-outline" data-page="home" data-section="services">Explore Services</a>
+        </div>
+        <div class="stats-row">
+          <div class="stat-item"><h3>10,000+</h3><p>Tons Recycled</p></div>
+          <div class="stat-item"><h3>500+</h3><p>Happy Clients</p></div>
+          <div class="stat-item"><h3><i class="fas fa-certificate"></i> Eco Certified</h3><p>Company</p></div>
+        </div>
+      </div>
+      <div class="scroll-down" id="scrollDown"><i class="fas fa-chevron-down"></i></div>
+    </section>
+
+    <section id="about">
+      <h2 class="reveal">About Clean Earth</h2>
+      <div class="section-sub reveal">Driving circular economy since 2012, we transform waste into valuable resources with cutting-edge green tech.</div>
+      <div class="mission-vision reveal">
+        <div class="glass-card"><i class="fas fa-bullseye"></i><h3>Our Mission</h3><p>To pioneer zero-waste ecosystems by integrating AI-driven sorting and renewable material recovery.</p></div>
+        <div class="glass-card"><i class="fas fa-eye"></i><h3>Our Vision</h3><p>A planet where every resource is endlessly reused – carbon neutral, waste free, and thriving.</p></div>
+      </div>
+      <div class="professional-img reveal">
+        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=2024&auto=format" alt="Recycling plant">
+      </div>
+    </section>
+
+    <section id="services">
+      <h2 class="reveal">Our Premium Services</h2>
+      <div class="section-sub reveal">Advanced recycling ecosystems tailored for a sustainable tomorrow.</div>
+      <div class="service-grid">
+        <div class="service-card reveal"><i class="fas fa-recycle"></i><h3>Plastic Recycling</h3><p>Convert plastic waste into high-grade raw materials.</p></div>
+        <div class="service-card reveal"><i class="fas fa-laptop-code"></i><h3>E-Waste Recycling</h3><p>Responsible recovery of precious metals & components.</p></div>
+        <div class="service-card reveal"><i class="fas fa-dumpster"></i><h3>Scrap Management</h3><p>Industrial scrap logistics & valorization.</p></div>
+        <div class="service-card reveal"><i class="fas fa-truck"></i><h3>Waste Collection</h3><p>Smart route collection & zero-landfill commitment.</p></div>
+      </div>
+    </section>
+
+    <section id="why-us">
+      <h2 class="reveal">Why Choose Us</h2>
+      <div class="why-grid">
+        <div class="why-card reveal"><i class="fas fa-certificate"></i><h3>Eco Certified</h3><p>ISO 14001 & Zero Waste accredited</p></div>
+        <div class="why-card reveal"><i class="fas fa-microchip"></i><h3>Advanced Technology</h3><p>AI optical sorters & blockchain traceability</p></div>
+        <div class="why-card reveal"><i class="fas fa-bolt"></i><h3>Fast Service</h3><p>Same-day response & 24/7 logistics</p></div>
+        <div class="why-card reveal"><i class="fas fa-users"></i><h3>Experienced Team</h3><p>100+ green specialists and engineers</p></div>
+      </div>
+    </section>
+
+    <!-- ===== PROCESS / HOW WE WORK SECTION ===== -->
+    <section class="process-section">
+      <div class="section-header">
+        <h2>♻️ Our Smart Recycling Process</h2>
+        <p>From your doorstep to a greener planet — see how we transform waste into valuable resources</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-step" data-step="1">
+          <div class="step-icon"><i class="fas fa-truck-fast"></i></div>
+          <div class="step-number">Step 01</div>
+          <h3>Waste Collection</h3>
+          <p>Eco-friendly fleet collects segregated waste from industries, businesses & communities.</p>
+        </div>
+        <div class="timeline-step" data-step="2">
+          <div class="step-icon"><i class="fas fa-microchip"></i></div>
+          <div class="step-number">Step 02</div>
+          <h3>Sorting & Segregation</h3>
+          <p>AI-powered optical sorters separate materials with 99% accuracy.</p>
+        </div>
+        <div class="timeline-step" data-step="3">
+          <div class="step-icon"><i class="fas fa-recycle"></i></div>
+          <div class="step-number">Step 03</div>
+          <h3>Recycling Process</h3>
+          <p>Advanced shredding, washing and conversion into raw materials.</p>
+        </div>
+        <div class="timeline-step" data-step="4">
+          <div class="step-icon"><i class="fas fa-seedling"></i></div>
+          <div class="step-number">Step 04</div>
+          <h3>Reuse & Sustainability</h3>
+          <p>Manufacturing new eco-products & closing the loop.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SUSTAINABILITY IMPACT SECTION ===== -->
+    <section class="impact-full" id="newImpactSection">
+      <div class="impact-header">
+        <h2>🌿 Our Impact on Planet Earth</h2>
+        <p>Real numbers, real change — driving the circular economy since 2012</p>
+      </div>
+      <div class="impact-stats">
+        <div class="impact-stat">
+          <i class="fas fa-trash-alt"></i>
+          <h3 id="newTonsCount">0</h3>
+          <p>Tons Waste Recycled</p>
+        </div>
+        <div class="impact-stat">
+          <i class="fas fa-tree"></i>
+          <h3 id="newTreesCount">0</h3>
+          <p>Trees Saved</p>
+        </div>
+        <div class="impact-stat">
+          <i class="fas fa-smog"></i>
+          <h3 id="newCarbonCount">0</h3>
+          <p>Tons CO₂ Reduced</p>
+        </div>
+        <div class="impact-stat">
+          <i class="fas fa-smile"></i>
+          <h3 id="newClientsCount">0</h3>
+          <p>Happy Clients</p>
+        </div>
+      </div>
+      <div class="earth-graphic">
+        <i class="fas fa-globe-asia"></i> <span style="font-size:1rem;"> + Regenerating nature</span>
+      </div>
+    </section>
+
+    <!-- ===== FAQ SECTION ===== -->
+    <section class="faq-section">
+      <div class="section-header">
+        <h2>❓ Frequently Asked Questions</h2>
+        <p>Everything you need to know about our recycling services</p>
+      </div>
+      <div class="faq-grid" id="faqContainer">
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>🔹 How does your recycling process work?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            We collect, sort using AI technology, process materials into raw resources, and then manufacture sustainable products — closing the loop completely.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>🔹 What is the pickup availability?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            We offer flexible pickup schedules: daily for industries, weekly for businesses, and on-demand for communities. Service available across Mumbai, Delhi, Bangalore and expanding.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>🔹 Do you handle industrial hazardous waste?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Yes! Our certified team follows CPCB guidelines for safe disposal and recycling of electronic waste, chemical containers, and industrial scrap with full documentation.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>🔹 What eco-certifications do you hold?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            We are ISO 14001:2015 certified, Zero Waste accredited, and recognized by the Green Business Bureau for sustainable operations.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>🔹 Can individuals partner with Clean Earth?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Absolutely! Individuals can drop off recyclables at our collection centers or join our community recycling drives. Contact us for more details.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <h2 class="reveal">Trusted by Industry Leaders</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card reveal"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><p>"Incredible efficiency, reduced our waste cost by 40%."</p><h4>— Riya Mehta, GreenTech Corp</h4></div>
+        <div class="testimonial-card reveal"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><p>"Their circular approach transformed our supply chain."</p><h4>— Arjun Singh, EcoBuild</h4></div>
+        <div class="testimonial-card reveal"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><p>"Professional, fast, and truly sustainable mission-driven team."</p><h4>— Neha Verma, Smart Cities</h4></div>
+      </div>
+    </section>
+
+    <section id="contact-section">
+      <div class="cta-section reveal">
+        <h2>Join Us in Creating a Sustainable Future</h2>
+        <p>Partner with Clean Earth for innovative recycling solutions.</p>
+        <a class="btn-primary btn-white" data-page="contact">Contact Our Team →</a>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Contact Page -->
+<div id="contactPage" class="page">
+  <section class="contact-hero">
+    <h1>Let's Connect for a Greener Tomorrow</h1>
+    <p>Have questions about our recycling solutions? Reach out to our team of eco-experts today.</p>
+  </section>
+
+  <div class="contact-main">
+    <div class="contact-grid">
+      <div class="contact-info-card">
+        <h2 style="color: var(--dark-green); margin-bottom: 1.5rem;">Get in Touch</h2>
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="info-details">
+            <h3>Visit Our Headquarters</h3>
+            <p>82 Green Park, EcoHub Business District<br>Andheri East, Mumbai - 400093<br>Maharashtra, India</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+          <div class="info-details">
+            <h3>Call Us</h3>
+            <p><a href="tel:+9192501 96673">+91 92501 96673</a> (Toll-Free)<br><a href="tel:+912261234567">+91 22 6123 4567</a> (Direct)</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-envelope"></i></div>
+          <div class="info-details">
+            <h3>Email Us</h3>
+            <p><a href="mailto:hello@cleanearth.com">hello@cleanearth.com</a><br><a href="mailto:support@cleanearth.com">support@cleanearth.com</a></p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-clock"></i></div>
+          <div class="info-details">
+            <h3>Business Hours</h3>
+            <p>Monday - Friday: 9:00 AM – 7:00 PM<br>Saturday: 10:00 AM – 3:00 PM<br>Sunday: Closed (Emergency support available)</p>
+          </div>
+        </div>
+        <div class="business-hours">
+          <i class="fas fa-leaf" style="font-size: 2rem; color: var(--emerald);"></i>
+          <p style="margin-top: 0.5rem;"><strong>24/7 Emergency Response</strong><br>For urgent waste collection & industrial spills, our rapid response team is always ready.</p>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h2 style="color: var(--dark-green); margin-bottom: 0.5rem;">Send Us a Message</h2>
+        <p style="margin-bottom: 1.5rem; color: #5a7a74;">Fill out the form below and our sustainability experts will respond within 24 hours.</p>
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="fullname">Full Name *</label>
+            <input type="text" id="fullname" name="fullname" required placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required placeholder="john@company.com">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 XXXXXXXXXX">
+          </div>
+          <div class="form-group">
+            <label for="service">Service Interested In *</label>
+            <select id="service" name="service" required>
+              <option value="">Select a service</option>
+              <option value="plastic">Plastic Recycling</option>
+              <option value="ewaste">E-Waste Recycling</option>
+              <option value="scrap">Scrap Management</option>
+              <option value="collection">Waste Collection</option>
+              <option value="consultation">General Consultation</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message *</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Tell us about your recycling requirements..."></textarea>
+          </div>
+          <button type="submit" class="submit-btn"><i class="fas fa-paper-plane" style="margin-right: 8px;"></i> Submit Inquiry</button>
+          <p style="font-size: 0.8rem; margin-top: 1rem; text-align: center; color: #7a9e96;">We respect your privacy. Your information is secure with us.</p>
+        </form>
+      </div>
+    </div>
+
+    <div class="map-section">
+      <iframe 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500.123456789!2d77.1737259!3d28.7678077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d003784368779%3A0xc1f80b98c1a1f2b3!2sRastogi%20Studio!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+  width="100%" 
+  height="400" 
+  style="border:0; border-radius: 32px;" 
+  allowfullscreen="" 
+  loading="lazy" 
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+    </div>
+  </div>
+</div>
+
+<!-- Floating WhatsApp Button -->
+<a href="#" class="floating-whatsapp" id="floatingWhatsappBtn">
+  <i class="fab fa-whatsapp"></i>
+  <span class="whatsapp-tooltip">Chat with us!</span>
+</a>
+<!-- Floating Email Button -->
+<a href="#" class="floating-email" id="floatingEmailBtn">
+  <i class="fas fa-envelope"></i>
+  <span class="email-tooltip">Send Email</span>
+</a>
+<!-- Floating Call Button -->
+<a href="tel:+919250196673" class="floating-call" id="floatingCallBtn">
+  <i class="fas fa-phone-alt"></i>
+  <span class="call-tooltip">Call Us</span>
+</a>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <!-- Logo and Company Info Section -->
+    <div class="footer-logo-section">
+      <img src="about-logo.png" alt="Clean Earth Logo" class="footer-logo">
+      <h4>Clean Earth Recycled Solution Private Limited</h4>
+      <p>Circular economy pioneers, committed to net-zero waste by 2030.</p>
+    </div>
+    
+    <!-- Quick Links -->
+    <div>
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="certifications.html">Certifications</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    
+    <!-- Contact Info -->
+    <div>
+      <h4>Contact</h4>
+      <p><i class="fas fa-map-marker-alt"></i> PLOT 22 & 32 KH NO. 14/12, GROUND FLOOR, GALI NO.-1, Buran, Delhi, North Delhi-110084, Delhi</p>
+      <p><i class="fas fa-phone"></i> +91 92501 96673</p>
+      <p><i class="fas fa-envelope"></i> Cleanearth.info.01@gmail.com</p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 Clean Earth Recycled Solution Private Limited — Driving Circular Economy</div>
+</footer>
+<div class="back-to-top" id="backTop"><i class="fas fa-arrow-up"></i></div>
+
+<script>
+  // Loader
+  window.addEventListener('load', function() {
+    const loader = document.getElementById('loader');
+    if (loader) {
+      loader.classList.add('fade-out');
+      setTimeout(() => { if(loader) loader.style.display = 'none'; }, 800);
+    }
+  });
+
+  // Page Navigation
+  const homePage = document.getElementById('homePage');
+  const contactPage = document.getElementById('contactPage');
+  const allPageLinks = document.querySelectorAll('[data-page]');
+
+  function showPage(pageName) {
+    if (pageName === 'home') {
+      homePage.classList.add('active-page');
+      contactPage.classList.remove('active-page');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (pageName === 'contact') {
+      contactPage.classList.add('active-page');
+      homePage.classList.remove('active-page');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      if (link.getAttribute('data-page') === pageName && !link.classList.contains('cta-quote')) {
+        link.classList.add('active');
+      } else if (!link.classList.contains('cta-quote')) {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  allPageLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const page = this.getAttribute('data-page');
+      const section = this.getAttribute('data-section');
+      if (page) {
+        e.preventDefault();
+        showPage(page);
+        setTimeout(() => {
+          if (section && page === 'home') {
+            const sectionElem = document.getElementById(section);
+            if (sectionElem) sectionElem.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }
+    });
+  });
+
+  // Sticky Navbar
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+    const backBtn = document.getElementById('backTop');
+    if (window.scrollY > 600) backBtn.classList.add('show');
+    else backBtn.classList.remove('show');
+  });
+
+  // Hamburger Menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinksMenu = document.getElementById('navLinks');
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      navLinksMenu.classList.toggle('active');
+    });
+  }
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinksMenu.classList.remove('active');
+    });
+  });
+
+  // Smooth scroll for anchor links on home page
+  document.querySelectorAll('#homePage a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId && targetId !== "#") {
+        e.preventDefault();
+        const targetElem = document.querySelector(targetId);
+        if (targetElem) targetElem.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Scroll down button
+  const scrollDownBtn = document.getElementById('scrollDown');
+  if (scrollDownBtn) {
+    scrollDownBtn.addEventListener('click', () => {
+      const aboutSection = document.getElementById('about');
+      if (aboutSection) aboutSection.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  // Back to top
+  const backTopBtn = document.getElementById('backTop');
+  if (backTopBtn) {
+    backTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // ===== NEW IMPACT SECTION COUNTERS =====
+  const newImpactSection = document.getElementById('newImpactSection');
+  let newCountersStarted = false;
+
+  function startNewCounters() {
+    if (newCountersStarted) return;
+    newCountersStarted = true;
+    
+    const newCountersList = [
+      { id: 'newTonsCount', target: 12850 },
+      { id: 'newTreesCount', target: 23100 },
+      { id: 'newCarbonCount', target: 9870 },
+      { id: 'newClientsCount', target: 548 }
+    ];
+    
+    newCountersList.forEach(cnt => {
+      let current = 0;
+      const element = document.getElementById(cnt.id);
+      if (!element) return;
+      const step = Math.ceil(cnt.target / 70);
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= cnt.target) {
+          element.innerText = cnt.target.toLocaleString() + '+';
+          clearInterval(timer);
+        } else {
+          element.innerText = current.toLocaleString() + '+';
+        }
+      }, 25);
+    });
+  }
+
+  if (newImpactSection) {
+    const newObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        startNewCounters();
+        newObserver.unobserve(newImpactSection);
+      }
+    }, { threshold: 0.3 });
+    newObserver.observe(newImpactSection);
+  }
+
+  // ===== EXISTING COUNTERS (from counter-section) =====
+  const existingCounters = [
+    { id: 'wasteCount', target: 12500 },
+    { id: 'treesCount', target: 22800 },
+    { id: 'carbonCount', target: 9600 },
+    { id: 'clientCount', target: 527 }
+  ];
+  let existingAnimationStarted = false;
+  const existingImpactSection = document.getElementById('impact');
+
+  function startExistingCounters() {
+    if (existingAnimationStarted) return;
+    existingAnimationStarted = true;
+    existingCounters.forEach(cnt => {
+      let current = 0;
+      const element = document.getElementById(cnt.id);
+      if (!element) return;
+      const step = Math.ceil(cnt.target / 80);
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= cnt.target) {
+          element.innerText = cnt.target.toLocaleString();
+          clearInterval(timer);
+        } else {
+          element.innerText = current.toLocaleString();
+        }
+      }, 25);
+    });
+  }
+
+  if (existingImpactSection) {
+    const existingObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        startExistingCounters();
+        existingObserver.unobserve(existingImpactSection);
+      }
+    }, { threshold: 0.3 });
+    existingObserver.observe(existingImpactSection);
+  }
+
+  // Scroll reveal for existing elements
+  const revealElements = document.querySelectorAll('#homePage .reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  // ===== FAQ ACCORDION =====
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    if (question) {
+      question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        faqItems.forEach(faq => faq.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+      });
+    }
+  });
+  if (faqItems.length > 0) {
+    faqItems[0].classList.add('active');
+  }
+
+  // ===== TIMELINE ANIMATION =====
+  const timelineSteps = document.querySelectorAll('.timeline-step');
+  timelineSteps.forEach((step, index) => {
+    step.style.opacity = '0';
+    step.style.transform = 'translateY(30px)';
+    step.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+    
+    const stepObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        step.style.opacity = '1';
+        step.style.transform = 'translateY(0)';
+        stepObserver.unobserve(step);
+      }
+    }, { threshold: 0.2 });
+    stepObserver.observe(step);
+  });
+
+  // Newsletter form
+  const newsletterForm = document.getElementById('newsletterForm');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('newsEmail')?.value;
+      if (email) {
+        alert(`Thank you! ${email} — You're now subscribed to green insights.`);
+        newsletterForm.reset();
+      } else {
+        alert('Please enter a valid email.');
+      }
+    });
+  }
+
+  // Contact form
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('fullname')?.value;
+      if (name) {
+        alert(`Thank you ${name}! Your inquiry has been received. Our team will contact you within 24 hours. 🌱`);
+        contactForm.reset();
+      } else {
+        alert('Please fill all required fields.');
+      }
+    });
+  }
+
+// Call Now button - Opens phone dialer
+const callNowBtn = document.getElementById('callNowBtn');
+if (callNowBtn) {
+  callNowBtn.addEventListener('click', (e) => {
+    // The href="tel:..." already handles the dialer
+    // This is just for analytics or additional tracking
+    console.log('Call button clicked');
+  });
+}
+  // ===== WHATSAPP CONFIGURATION =====
+  const WHATSAPP_NUMBER = "919250196673";
+  const WHATSAPP_MESSAGE = "Hello Clean Earth Team! I'm interested in your eco-friendly recycling solutions. Can you please provide more information?";
+
+  function openWhatsApp() {
+    const encodedMessage = encodeURIComponent(WHATSAPP_MESSAGE);
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
+  // Navbar WhatsApp button
+  const whatsappNavBtn = document.getElementById('whatsappNavBtn');
+  if (whatsappNavBtn) {
+    whatsappNavBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openWhatsApp();
+    });
+  }
+
+  // Floating WhatsApp button
+  const floatingWhatsappBtn = document.getElementById('floatingWhatsappBtn');
+  if (floatingWhatsappBtn) {
+    floatingWhatsappBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openWhatsApp();
+    });
+  }
+
+  // ===== FLOATING EMAIL BUTTON - Opens Contact Page Modal =====
+const COMPANY_EMAIL = "saurav343sharma@gmail.com";
+
+function openEmail() {
+  // Open contact page instead of mailto
+  window.location.href = "contact.html";
+}
+
+const floatingEmailBtn = document.getElementById('floatingEmailBtn');
+if (floatingEmailBtn) {
+  floatingEmailBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    openEmail();
+  });
+}
+
+</script>
+
+</body>
+</html>
