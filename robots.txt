@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Allow: /about.html
+Allow: /services.html
+Allow: /gallery.html
+Allow: /certifications.html
+Allow: /contact.html
+
+Disallow: /privacy.html
+Disallow: /terms.html
+Disallow: /cookie-policy.html
+
+Sitemap: https://thecleanearth.in/sitemap.xml
+
+# Crawl delay to be respectful to server
+Crawl-delay: 5
+
+# Specify your site's host
+Host: https://thecleanearth.in
