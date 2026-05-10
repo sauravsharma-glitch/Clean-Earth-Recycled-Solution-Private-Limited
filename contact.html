@@ -705,7 +705,7 @@ footer {
     <div class="contact-form">
       <h2 style="color: var(--dark-green); margin-bottom: 0.5rem;">Send Us a Message</h2>
       <p style="margin-bottom: 1.5rem; color: #5a7a74;">Fill out the form below and our sustainability experts will respond within 24 hours.</p>
-      
+<!--       
       <div id="successMessage" class="success-message">
         <i class="fas fa-check-circle"></i>
         <span>Thank you! Your message has been sent. We'll get back to you soon! 🌱</span>
@@ -713,41 +713,48 @@ footer {
       <div id="errorMessage" class="error-message">
         <i class="fas fa-exclamation-triangle"></i>
         <span>Oops! Something went wrong. Please try again or email us directly.</span>
-      </div>
+      </div> -->
       
-      <form id="contactForm">
-        <div class="form-group">
-          <label for="fullname">Full Name *</label>
-          <input type="text" id="fullname" name="fullname" required placeholder="John Doe">
-        </div>
-        <div class="form-group">
-          <label for="email">Email Address *</label>
-          <input type="email" id="email" name="email" required placeholder="john@company.com">
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone" placeholder="+91 XXXXXXXXXX">
-        </div>
-        <div class="form-group">
-          <label for="service">Service Interested In *</label>
-          <select id="service" name="service" required>
-            <option value="">Select a service</option>
-            <option value="plastic">Plastic Recycling</option>
-            <option value="ewaste">E-Waste Recycling</option>
-            <option value="scrap">Scrap Management</option>
-            <option value="collection">Waste Collection</option>
-            <option value="consultation">General Consultation</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="message">Your Message *</label>
-          <textarea id="message" name="message" rows="5" required placeholder="Tell us about your recycling requirements..."></textarea>
-        </div>
-        <button type="submit" class="submit-btn" id="submitBtn">
-          <i class="fas fa-paper-plane" style="margin-right: 8px;"></i> Send Message
-        </button>
-        <p style="font-size: 0.8rem; margin-top: 1rem; text-align: center; color: #7a9e96;">We respect your privacy. Your information is secure with us.</p>
-      </form>
+<form id="contactForm">
+  <div class="form-group">
+    <label for="fullname">Full Name *</label>
+    <input type="text" id="fullname" name="fullname" required placeholder="John Doe">
+  </div>
+  <div class="form-group">
+    <label for="email">Email Address *</label>
+    <input type="email" id="email" name="email" required placeholder="john@company.com">
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" placeholder="+91 XXXXXXXXXX">
+  </div>
+  <div class="form-group">
+    <label for="service">Service Interested In *</label>
+    <select id="service" name="service" required>
+      <option value="">Select a service</option>
+      <option value="plastic">Plastic Recycling</option>
+      <option value="ewaste">E-Waste Recycling</option>
+      <option value="scrap">Scrap Management</option>
+      <option value="collection">Waste Collection</option>
+      <option value="consultation">General Consultation</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="message">Your Message *</label>
+    <textarea id="message" name="message" rows="5" required placeholder="Tell us about your recycling requirements..."></textarea>
+  </div>
+  <button type="submit" class="submit-btn" id="submitBtn">
+    <i class="fas fa-paper-plane" style="margin-right: 8px;"></i> Send Message
+  </button>
+</form>
+
+<!-- Success/Error Messages - NO ALERTS -->
+<div id="successMessage" class="success-message" style="display: none; background: #d4edda; color: #155724; padding: 1rem; border-radius: 12px; margin-top: 1rem;">
+  <i class="fas fa-check-circle"></i> <span>Thank you! Your message has been sent. We'll get back to you soon! 🌱</span>
+</div>
+<div id="errorMessage" class="error-message" style="display: none; background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 12px; margin-top: 1rem;">
+  <i class="fas fa-exclamation-triangle"></i> <span>Oops! Something went wrong. Please try again.</span>
+</div>
     </div>
   </div>
 
@@ -861,63 +868,98 @@ footer {
     });
   }
 
-  // Contact Form
-  const contactForm = document.getElementById('contactForm');
-  const submitBtn = document.getElementById('submitBtn');
-  const successMsg = document.getElementById('successMessage');
-  const errorMsg = document.getElementById('errorMessage');
-  const YOUR_EMAIL = "cleanearth.info.01@gmail.com";
-  
-  if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
+ // Contact Form - Silent Submit with Page Messages
+const contactForm = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+const successMsg = document.getElementById('successMessage');
+const errorMsg = document.getElementById('errorMessage');
+
+// YOUR EMAIL ADDRESS
+const YOUR_EMAIL = "Cleanearth.info.01@gmail.com";
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Get form values
+    const fullname = document.getElementById('fullname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const service = document.getElementById('service').value;
+    const message = document.getElementById('message').value.trim();
+    
+    // Validate
+    if (!fullname || !email || !message) {
+      showMessage(errorMsg, 'Please fill all required fields.');
+      return;
+    }
+    
+    // Email validation
+    if (!email.includes('@') || !email.includes('.')) {
+      showMessage(errorMsg, 'Please enter a valid email address.');
+      return;
+    }
+    
+    // Disable button and show loading
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending...';
+    
+    // Hide previous messages
+    successMsg.style.display = 'none';
+    errorMsg.style.display = 'none';
+    
+    try {
+      const formData = new FormData();
+      formData.append('name', fullname);
+      formData.append('email', email);
+      formData.append('phone', phone);
+      formData.append('service', service);
+      formData.append('message', message);
+      formData.append('_subject', `New Contact from ${fullname} - Clean Earth`);
+      formData.append('_template', 'table');
+      formData.append('_captcha', 'false');
       
-      const fullname = document.getElementById('fullname').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const service = document.getElementById('service').value;
-      const message = document.getElementById('message').value.trim();
+      const response = await fetch('https://formsubmit.co/ajax/' + YOUR_EMAIL, {
+        method: 'POST',
+        body: formData
+      });
       
-      if (!fullname || !email || !message) {
-        alert('Please fill all required fields.');
-        return;
-      }
-      
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending...';
-      
-      try {
-        const formData = new FormData();
-        formData.append('name', fullname);
-        formData.append('email', email);
-        formData.append('phone', phone);
-        formData.append('service', service);
-        formData.append('message', message);
-        formData.append('_subject', `New Contact from ${fullname}`);
-        formData.append('_template', 'table');
-        formData.append('_captcha', 'false');
+      if (response.ok) {
+        // Success - show message on page
+        showMessage(successMsg, 'Thank you! Your message has been sent. We will contact you soon! 🌱');
+        contactForm.reset();
         
-        const response = await fetch('https://formsubmit.co/ajax/' + YOUR_EMAIL, {
-          method: 'POST',
-          body: formData
-        });
-        
-        if (response.ok) {
-          successMsg.classList.add('show');
-          contactForm.reset();
-          setTimeout(() => successMsg.classList.remove('show'), 5000);
-        } else {
-          throw new Error('Failed');
-        }
-      } catch (error) {
-        errorMsg.classList.add('show');
-        setTimeout(() => errorMsg.classList.remove('show'), 5000);
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<i class="fas fa-paper-plane" style="margin-right: 8px;"></i> Send Message';
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          successMsg.style.display = 'none';
+        }, 5000);
+      } else {
+        throw new Error('Failed to send');
       }
-    });
+    } catch (error) {
+      showMessage(errorMsg, 'Unable to send message. Please email us directly at ' + YOUR_EMAIL);
+      
+      // Hide error message after 5 seconds
+      setTimeout(() => {
+        errorMsg.style.display = 'none';
+      }, 5000);
+    } finally {
+      // Re-enable button
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fas fa-paper-plane" style="margin-right: 8px;"></i> Send Message';
+    }
+  });
+}
+
+// Helper function to show messages without alert
+function showMessage(element, message) {
+  if (!element) return;
+  const messageSpan = element.querySelector('span');
+  if (messageSpan) {
+    messageSpan.textContent = message;
   }
+  element.style.display = 'flex';
+}
 
   // WhatsApp Functionality
   const WHATSAPP_NUMBER = "919250196673";
