@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Cookie Policy - Clean Earth Recycled Solution Private Limited. Learn about how we use cookies on our website.">
+  <title>Cookie Policy | Clean Earth Recycling Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" type="image/png" href="Business-logo.png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #f5fbf9 0%, #e8f3ef 100%); color: #1a2e2c; min-height: 100vh; }
+    :root { --dark-green: #0a2f2a; --emerald: #2c7a6e; }
+    .navbar { position: fixed; top: 0; left: 0; width: 100%; padding: 1rem 5%; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); z-index: 1000; transition: all 0.35s ease; border-bottom: 1px solid rgba(44,122,110,0.1); }
+    .navbar.scrolled { background: rgba(255,255,255,0.98); box-shadow: 0 8px 28px rgba(0,0,0,0.05); padding: 0.7rem 5%; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1440px; margin: 0 auto; }
+    .logo { display: flex; align-items: center; gap: 10px; font-size: 1.4rem; font-weight: 800; }
+    .logo-img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; }
+    .logo span { background: linear-gradient(130deg, #0a2f2a, #2c7a6e); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: #1e3b37; transition: all 0.35s; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--emerald); }
+    .hamburger { display: none; font-size: 1.8rem; cursor: pointer; color: var(--dark-green); }
+    .page-header { background: linear-gradient(135deg, #0a2f2a 0%, #1f6b5d 100%); padding: 8rem 5% 3rem; text-align: center; color: white; }
+    .page-header h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .content-section { max-width: 1000px; margin: 3rem auto; padding: 2rem 5%; background: white; border-radius: 32px; box-shadow: 0 20px 40px -12px rgba(0,0,0,0.08); }
+    .content-section h2 { color: var(--dark-green); font-size: 1.6rem; margin-top: 1.5rem; margin-bottom: 1rem; }
+    .content-section h3 { color: var(--dark-green); font-size: 1.2rem; margin-top: 1.2rem; margin-bottom: 0.5rem; }
+    .content-section p { color: #4a6a65; line-height: 1.7; margin-bottom: 1rem; }
+    .content-section ul { margin: 1rem 0 1rem 2rem; color: #4a6a65; line-height: 1.7; }
+    .content-section li { margin-bottom: 0.5rem; }
+    .cookie-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    .cookie-table th, .cookie-table td { border: 1px solid #e0ece8; padding: 0.8rem; text-align: left; }
+    .cookie-table th { background: #eef8f5; color: var(--dark-green); }
+    .last-updated { background: #eef8f5; padding: 1rem; border-radius: 16px; text-align: center; margin-top: 2rem; font-size: 0.85rem; }
+    footer { background: #08201c; color: #cddfdb; padding: 2rem 5%; text-align: center; margin-top: 2rem; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .footer-links a { color: #cddfdb; text-decoration: none; font-size: 0.85rem; }
+    .footer-links a:hover { color: var(--emerald); }
+    .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: var(--emerald); color: white; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transition: 0.3s; z-index: 99; }
+    .back-to-top.show { opacity: 1; }
+    .cookie-consent { position: fixed; bottom: 0; left: 0; right: 0; background: var(--dark-green); color: white; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; z-index: 100; }
+    .cookie-consent button { background: var(--emerald); color: white; border: none; padding: 0.5rem 1.5rem; border-radius: 40px; cursor: pointer; }
+    .cookie-consent button:hover { background: #3e9b8b; }
+    @media (max-width: 768px) { .hamburger { display: block; } .nav-links { position: fixed; top: 70px; left: -100%; flex-direction: column; background: white; width: 80%; height: calc(100vh - 70px); padding: 2rem; transition: 0.4s; gap: 2rem; } .nav-links.active { left: 0; } .page-header h1 { font-size: 1.8rem; } .content-section h2 { font-size: 1.3rem; } .cookie-table { font-size: 0.8rem; } }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <div class="logo"><img src="Business-logo.png" alt="Logo" class="logo-img"><span>CLEAN EARTH</span></div>
+    <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-header">
+  <h1>Cookie Policy</h1>
+  <p>Understand how and why we use cookies on our website.</p>
+</section>
+
+<div class="content-section">
+  <h2>What Are Cookies?</h2>
+  <p>Cookies are small text files that are placed on your computer or mobile device when you visit a website. They are widely used to make websites work more efficiently and provide information to website owners.</p>
+
+  <h2>How We Use Cookies</h2>
+  <p>We use cookies to:</p>
+  <ul>
+    <li>Ensure our website functions properly</li>
+    <li>Remember your preferences and settings</li>
+    <li>Analyze how visitors use our website</li>
+    <li>Improve your browsing experience</li>
+  </ul>
+
+  <h2>Types of Cookies We Use</h2>
+  <table class="cookie-table">
+    <thead>
+      <tr><th>Type</th><th>Purpose</th><th>Duration</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Essential Cookies</strong></td><td>Necessary for website functionality. Cannot be disabled.</td><td>Session</td></tr>
+      <tr><td><strong>Preference Cookies</strong></td><td>Remember your settings and preferences.</td><td>1 year</td></tr>
+      <tr><td><strong>Analytics Cookies</strong></td><td>Help us understand how visitors interact with our site.</td><td>2 years</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Third-Party Cookies</h2>
+  <p>We may use third-party services that set their own cookies:</p>
+  <ul>
+    <li><strong>Google Analytics:</strong> To analyze website traffic and user behavior</li>
+    <li><strong>FormSubmit/Web3Forms:</strong> To process contact form submissions</li>
+  </ul>
+
+  <h2>Managing Cookies</h2>
+  <p>You can control and manage cookies in your browser settings. Most browsers allow you to:</p>
+  <ul>
+    <li>See what cookies are stored and delete them</li>
+    <li>Block third-party cookies</li>
+    <li>Block all cookies from specific sites</li>
+    <li>Block all cookies from being set</li>
+  </ul>
+  <p>To learn more about managing cookies, visit your browser's help section or <a href="https://www.aboutcookies.org" target="_blank">www.aboutcookies.org</a>.</p>
+
+  <h2>Changes to This Policy</h2>
+  <p>We may update this Cookie Policy from time to time. Any changes will be posted on this page.</p>
+
+  <h2>Contact Us</h2>
+  <p>If you have any questions about our use of cookies, please contact us at <strong>hello@cleanearth.com</strong>.</p>
+
+  <div class="last-updated"><i class="fas fa-calendar-alt"></i> Last Updated: May 2025</div>
+</div>
+
+<div id="cookieConsent" class="cookie-consent" style="display: flex;">
+  <p><i class="fas fa-cookie-bite"></i> We use cookies to enhance your browsing experience. By continuing to use our website, you consent to our use of cookies.</p>
+  <button id="acceptCookies">Accept</button>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="cookie-policy.html">Cookie Policy</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+  <p>© 2025 Clean Earth Recycled Solution Private Limited — Driving Circular Economy</p>
+</footer>
+<div class="back-to-top" id="backTop"><i class="fas fa-arrow-up"></i></div>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+    document.getElementById('backTop')?.classList.toggle('show', window.scrollY > 600);
+  });
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger?.addEventListener('click', () => navLinks.classList.toggle('active'));
+  document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+  document.getElementById('backTop')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Cookie Consent
+  if (!localStorage.getItem('cookiesAccepted')) {
+    document.getElementById('cookieConsent').style.display = 'flex';
+  } else {
+    document.getElementById('cookieConsent').style.display = 'none';
+  }
+  document.getElementById('acceptCookies')?.addEventListener('click', () => {
+    localStorage.setItem('cookiesAccepted', 'true');
+    document.getElementById('cookieConsent').style.display = 'none';
+  });
+</script>
+</body>
+</html>
